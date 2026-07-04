@@ -1,0 +1,37 @@
+﻿export const coupleConfig = {
+  groomNameEnglish: "Rahul",
+  brideNameEnglish: "Shilpa",
+  
+  groomNameMarathi: "राहुल",
+  brideNameMarathi: "शिल्पा",
+  
+  coupleNameEnglish: "Rahul \u2661 Shilpa",
+  coupleNameMarathi: "राहुल \u2661 शिल्पा",
+  
+  marriageDateISO: "2025-07-06T00:00:00+05:30",
+  marriageDateEnglish: "6 July 2025",
+  marriageDateMarathi: "६ जुलै २०२५",
+  
+  anniversaryDateEnglish: "6 July 2026",
+  anniversaryDateMarathi: "६ जुलै २०२६",
+  
+  anniversaryNumber: 1,
+  
+  photo1: "/images/photo-1.jpg",
+  photo2: "/images/photo-2.jpg",
+  photo3: "/images/photo-3.jpg",
+  
+  photo1Position: "center 30%",
+  photo2Position: "center center",
+  photo3Position: "center 25%",
+  
+  audioSource: "/audio/anniversary-music.mp3",
+  
+  mainTitleMarathi: "आपल्या सहजीवनाचं पहिलं सुंदर वर्ष",
+  mainSubtitleMarathi: "आठवणींचं एक वर्ष… सोबतीची आयुष्यभराची वाट…",
+  
+  signatureFrom: "राहुल",
+  signatureTo: "शिल्पा",
+} as const;
+
+export type CoupleConfig = typeof coupleConfig;

@@ -1,0 +1,111 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+    background-color: #FFF8E7;
+    color: #292321;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .font-marathi {
+    font-family: 'Noto Serif Devanagari', 'Tiro Devanagari Marathi', serif;
+  }
+  
+  .font-english {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  }
+  
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D79A2B 0%, #F2C96D 50%, #B8873A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-maroon-gradient {
+    background: linear-gradient(180deg, #6D1F2F 0%, #48141F 100%);
+  }
+  
+  .bg-gold-shimmer {
+    background: linear-gradient(90deg, #B8873A 0%, #F2C96D 50%, #B8873A 100%);
+    background-size: 200% 100%;
+  }
+  
+  .paithani-border {
+    border-image: linear-gradient(135deg, #B8873A, #D79A2B, #F2C96D, #D79A2B, #B8873A) 1;
+  }
+  
+  .gold-corner {
+    position: relative;
+  }
+  
+  .gold-corner::before,
+  .gold-corner::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #B8873A;
+  }
+  
+  .gold-corner::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .gold-corner::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+  
+  .cream-paper {
+    background-color: #F7E8CF;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  
+  .image-safe {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@layer utilities {
+  .text-shadow-gold {
+    text-shadow: 0 2px 10px rgba(183, 134, 58, 0.3);
+  }
+  
+  .text-shadow-maroon {
+    text-shadow: 0 2px 10px rgba(109, 31, 47, 0.4);
+  }
+  
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
