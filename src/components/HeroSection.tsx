@@ -12,8 +12,8 @@ export const HeroSection: React.FC = () => {
           alt="Rahul and Shilpa"
           className="w-full h-full object-cover"
           style={{ objectPosition: coupleConfig.photo1Position }}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1.2 }}
+          initial={{ scale: 1.0 }}
+          animate={{ scale: 1.05 }}
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
           onError={(e) => {
             const target = e.target as HTMLImageElement;

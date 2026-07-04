@@ -21,7 +21,7 @@
   photo2: "/images/photo-2.jpg",
   photo3: "/images/photo-3.jpg",
   
-  photo1Position: "center 30%",
+  photo1Position: "center center",
   photo2Position: "center center",
   photo3Position: "center 25%",
   

@@ -31,7 +31,7 @@ export const MusicControl: React.FC<MusicControlProps> = ({ audioHook, className
       ) : (
         <VolumeX className="w-5 h-5 text-warm-cream/70" />
       )}
-      <audio ref={audioHook.audioRef} src={coupleConfig.audioSource} preload="none" />
+
     </motion.button>
   );
 };
