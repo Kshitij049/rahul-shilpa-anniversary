@@ -36,25 +36,25 @@ export const HeroSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-marathi text-soft-haldi text-xl md:text-2xl mb-4 tracking-wide">
+          <p className="font-marathi text-soft-haldi text-lg sm:text-lg sm:text-xl md:text-2xl mb-4 tracking-wide">
             पहिलं वर्ष…<br />
             <span className="text-warm-ivory">एक सुंदर आठवण</span>
           </p>
           <div className="my-8">
-            <h1 className="font-english text-warm-ivory text-5xl md:text-7xl lg:text-8xl font-bold leading-none">
+            <h1 className="font-english text-warm-ivory text-4xl sm:text-5xl md:text-7xl font-bold leading-none">
               {coupleConfig.groomNameEnglish}
             </h1>
-            <p className="font-english text-kesari-gold text-3xl md:text-4xl my-2">&</p>
-            <h1 className="font-english text-warm-ivory text-5xl md:text-7xl lg:text-8xl font-bold leading-none">
+            <p className="font-english text-kesari-gold text-2xl sm:text-2xl sm:text-3xl md:text-4xl my-2">&</p>
+            <h1 className="font-english text-warm-ivory text-4xl sm:text-5xl md:text-7xl font-bold leading-none">
               {coupleConfig.brideNameEnglish}
             </h1>
           </div>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-antique-gold to-transparent mx-auto my-6" />
-          <p className="font-marathi text-warm-cream/90 text-lg md:text-xl leading-relaxed mb-4">
+          <p className="font-marathi text-warm-cream/90 text-base sm:text-base sm:text-lg md:text-xl leading-relaxed mb-4">
             सहजीवनाच्या सुंदर प्रवासाला<br />
             आज एक वर्ष पूर्ण…
           </p>
-          <p className="font-english text-soft-haldi/80 text-lg md:text-xl italic tracking-wide">
+          <p className="font-english text-soft-haldi/80 text-base sm:text-base sm:text-lg md:text-xl italic tracking-wide">
             Happy First Wedding Anniversary
           </p>
         </motion.div>
@@ -63,3 +63,5 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
+
+

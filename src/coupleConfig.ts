@@ -23,7 +23,7 @@
   
   photo1Position: "center center",
   photo2Position: "center center",
-  photo3Position: "center 25%",
+  photo3Position: "center 25%",\n  \n  photo4: "/images/photo-4.jpg",\n  photo4Position: "center center",\n  \n  photo4: "/images/photo-4.jpg",\n  photo4Position: "center center",
   
   audioSource: "/audio/anniversary-music.mp3",
   

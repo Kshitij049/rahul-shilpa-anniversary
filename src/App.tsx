@@ -105,8 +105,8 @@ function App() {
           <FinalCinematicSection />
           <ShareSection />
           
-          <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center bg-royal-maroon/80 backdrop-blur-sm text-warm-cream/90 px-3 py-8 rounded-l-lg border-l border-antique-gold/40 shadow-lg">
-            <p className="font-english text-[10px] tracking-widest uppercase" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>Created by Kshitij Kamble</p>
+          <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-royal-maroon/80 backdrop-blur-sm text-warm-cream/90 px-2 py-4 rounded-r-lg border-r border-antique-gold/40 shadow-lg">
+            <p className="font-english text-[8px] tracking-widest uppercase" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>Created by Kshitij Kamble</p>
           </div>
           <footer className="py-8 bg-deep-wine text-center">
             <p className="font-marathi text-warm-cream/60 text-sm">
@@ -128,5 +128,7 @@ function App() {
 }
 
 export default App;
+
+
 
 
