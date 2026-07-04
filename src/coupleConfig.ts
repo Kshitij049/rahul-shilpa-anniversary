@@ -32,6 +32,9 @@
   
   signatureFrom: "राहुल",
   signatureTo: "शिल्पा",
+  
+  creatorName: "Kshitij Kamble",
+  creatorEmail: "atomicwork247@gmail.com",
 } as const;
 
 export type CoupleConfig = typeof coupleConfig;

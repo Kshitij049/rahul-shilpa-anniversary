@@ -111,6 +111,9 @@ function App() {
             <p className="font-marathi text-warm-cream/40 text-xs mt-1">
               {coupleConfig.anniversaryDateMarathi}
             </p>
+            <p className="font-marathi text-warm-cream/30 text-xs mt-2">
+              Created with love by {coupleConfig.creatorName} | {coupleConfig.creatorEmail}
+            </p>
           </footer>
           
           <MusicControl audioHook={audioHook} />
@@ -121,3 +124,4 @@ function App() {
 }
 
 export default App;
+
