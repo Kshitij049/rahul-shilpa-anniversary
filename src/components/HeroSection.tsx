@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { coupleConfig } from '../coupleConfig';
 import { FloralCorner } from './DecorativeElements';
@@ -59,9 +59,24 @@ export const HeroSection: React.FC = () => {
           </p>
         </motion.div>
       </div>
+      {/* Scroll Hint - Bottom of first slide */}
+      <motion.div 
+        className="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+      >
+        <motion.div 
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg className="w-8 h-8 text-antique-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </motion.div>
+        <p className="font-marathi text-warm-cream/70 text-xs mt-1">खाली स्क्रोल करा</p>
+      </motion.div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-warm-ivory to-transparent" />
     </section>
   );
 };
-
-
