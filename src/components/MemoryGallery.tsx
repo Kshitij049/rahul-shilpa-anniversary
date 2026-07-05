@@ -8,14 +8,14 @@ const photos = [
   { 
     src: coupleConfig.photo1, 
     caption: 'साध्या क्षणांत सापडलेलं खरं सुख…',
-    subCaption: '०६ • ०७ • २०२५',
+    subCaption: 'पहिलं वर्ष',
     position: coupleConfig.photo1Position,
     rotate: -2
   },
   { 
     src: coupleConfig.photo2, 
     caption: 'जिथून आपल्या आठवणींना नवी ओळख मिळाली…',
-    subCaption: 'पहिलं वर्ष',
+    subCaption: '०६ · ०७ · २०२५',
     position: coupleConfig.photo2Position,
     rotate: 1
   },
@@ -125,8 +125,8 @@ export const MemoryGallery: React.FC = () => {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Polaroid Frame */}
-              <div className="bg-warm-cream p-3 pb-16 rounded-sm shadow-xl hover:shadow-2xl transition-shadow duration-500 relative">
+              {/* Polaroid Frame — LONGER for photo 1 */}
+              <div className={`bg-warm-cream p-3 pb-20 rounded-sm shadow-xl hover:shadow-2xl transition-shadow duration-500 relative ${index === 0 ? 'pt-4' : ''}`}>
                 {/* Tape Effect */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-warm-ivory/80 rotate-1 shadow-sm z-10" 
                   style={{ 
@@ -135,13 +135,13 @@ export const MemoryGallery: React.FC = () => {
                   }}
                 />
                 
-                {/* Photo */}
+                {/* Photo — TALLER for photo 1 to prevent head cut */}
                 <div className="relative overflow-hidden bg-white">
                   <img
                     src={photo.src}
                     alt={`Memory ${index + 1}`}
-                    className="w-full aspect-[3/4] object-cover"
-                    style={{ objectPosition: photo.position }}
+                    className={`w-full object-cover ${index === 0 ? 'aspect-[3/5]' : 'aspect-[3/4]'}`}
+                    style={{ objectPosition: index === 0 ? 'center 15%' : photo.position }}
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     loading="lazy"
                   />
@@ -172,7 +172,7 @@ export const MemoryGallery: React.FC = () => {
           <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/60 border-2 border-antique-gold/20 shadow-lg">
             <Heart className="w-4 h-4 text-muted-rose fill-muted-rose" />
             <p className="font-marathi text-royal-maroon text-lg tracking-[0.3em] font-semibold">
-              ०६ • ०७ • २०२५
+              ०६ · ०७ · २०२५
             </p>
             <Heart className="w-4 h-4 text-muted-rose fill-muted-rose" />
           </div>
