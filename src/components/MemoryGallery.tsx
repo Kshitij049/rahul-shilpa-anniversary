@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Camera, Heart } from 'lucide-react';
 import { coupleConfig } from '../coupleConfig';
 import { MogaraGarland, DecorativeDivider } from './DecorativeElements';
 
@@ -9,19 +9,22 @@ const photos = [
     src: coupleConfig.photo1, 
     caption: 'साध्या क्षणांत सापडलेलं खरं सुख…',
     subCaption: '०६ • ०७ • २०२५',
-    position: coupleConfig.photo1Position 
+    position: coupleConfig.photo1Position,
+    rotate: -2
   },
   { 
     src: coupleConfig.photo2, 
     caption: 'जिथून आपल्या आठवणींना नवी ओळख मिळाली…',
     subCaption: 'पहिलं वर्ष',
-    position: coupleConfig.photo2Position 
+    position: coupleConfig.photo2Position,
+    rotate: 1
   },
   { 
     src: coupleConfig.photo3, 
     caption: 'आणि ही तर फक्त सुरुवात आहे…',
     subCaption: 'आयुष्यभराचं लाभलं',
-    position: coupleConfig.photo3Position 
+    position: coupleConfig.photo3Position,
+    rotate: -1
   },
 ];
 
@@ -43,7 +46,6 @@ export const MemoryGallery: React.FC = () => {
     }
   };
 
-  // Keyboard navigation for lightbox
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIndex === null) return;
@@ -56,17 +58,17 @@ export const MemoryGallery: React.FC = () => {
   }, [lightboxIndex]);
 
   return (
-    <section className="relative py-20 px-4 md:px-6 bg-warm-ivory overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-royal-maroon" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-kesari-gold" />
+    <section className="relative py-24 px-4 md:px-6 bg-warm-ivory overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+        <div className="absolute top-10 left-1/4 w-64 h-64 rounded-full bg-royal-maroon blur-3xl" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 rounded-full bg-kesari-gold blur-3xl" />
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -74,106 +76,105 @@ export const MemoryGallery: React.FC = () => {
         >
           <MogaraGarland className="mb-6 mx-auto" />
           
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-antique-gold" />
-            <Camera className="w-5 h-5 text-antique-gold" />
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-antique-gold" />
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-antique-gold" />
+            <div className="w-10 h-10 rounded-full bg-warm-cream border-2 border-antique-gold/30 flex items-center justify-center">
+              <Camera className="w-5 h-5 text-antique-gold" />
+            </div>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-antique-gold" />
           </div>
 
-          <h2 className="font-marathi text-royal-maroon text-3xl md:text-5xl font-bold mb-3 tracking-wide">
+          <h2 className="font-marathi text-royal-maroon text-4xl md:text-5xl font-bold mb-3 tracking-wide">
             तीन छायाचित्रं…
           </h2>
-          <p className="font-marathi text-deep-charcoal/70 text-xl md:text-2xl font-medium">
+          <p className="font-marathi text-deep-charcoal/70 text-xl md:text-2xl font-medium mb-2">
             हजार आठवणी…
           </p>
-          <p className="font-marathi text-kesari-gold/80 text-lg mt-2 italic">
+          <p className="font-marathi text-kesari-gold/80 text-lg italic">
             आणि आयुष्यभराचं लाभलं…
           </p>
           
           <DecorativeDivider className="mt-8 mx-auto" />
         </motion.div>
 
-        {/* Photo Grid - Masonry Style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {/* Polaroid Photo Grid */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10">
           {photos.map((photo, index) => (
             <motion.div
               key={index}
-              className="group relative cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="group cursor-pointer"
+              initial={{ opacity: 0, y: 50, rotate: 0 }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0, 
+                rotate: photo.rotate 
+              }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ 
-                delay: index * 0.2, 
-                duration: 0.7,
-                ease: [0.25, 0.46, 0.45, 0.94]
+                delay: index * 0.25, 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100
               }}
               onClick={() => openLightbox(index)}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotate: 0,
+                y: -10,
+                transition: { duration: 0.4 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              {/* Photo Card */}
-              <div className={`
-                relative overflow-hidden rounded-2xl shadow-lg 
-                hover:shadow-2xl transition-all duration-500 ease-out
-                ${index === 1 ? 'md:mt-8' : ''}
-                ${index === 2 ? 'md:mt-4' : ''}
-              `}>
-                {/* Image Container */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-warm-cream">
+              {/* Polaroid Frame */}
+              <div className="bg-warm-cream p-3 pb-16 rounded-sm shadow-xl hover:shadow-2xl transition-shadow duration-500 relative">
+                {/* Tape Effect */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-warm-ivory/80 rotate-1 shadow-sm z-10" 
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(255,248,231,0.9) 0%, rgba(247,232,207,0.8) 100%)',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                  }}
+                />
+                
+                {/* Photo */}
+                <div className="relative overflow-hidden bg-white">
                   <img
                     src={photo.src}
                     alt={`Memory ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="w-full aspect-[3/4] object-cover"
                     style={{ objectPosition: photo.position }}
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     loading="lazy"
                   />
-                  
-                  {/* Gradient Overlay - Always visible at bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/80 via-deep-charcoal/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                  
-                  {/* Caption Overlay - Always visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 transform transition-transform duration-500">
-                    <p className="font-marathi text-warm-ivory text-base md:text-lg leading-relaxed font-medium text-center drop-shadow-lg">
-                      {photo.caption}
-                    </p>
-                    <p className="font-marathi text-kesari-gold/90 text-sm mt-2 text-center tracking-wider">
-                      {photo.subCaption}
-                    </p>
-                  </div>
+                </div>
 
-                  {/* Hover Border Effect */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-kesari-gold/40 rounded-2xl transition-colors duration-500" />
+                {/* Caption below photo (Polaroid style) */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                  <p className="font-marathi text-royal-maroon text-sm leading-relaxed font-medium">
+                    {photo.caption}
+                  </p>
+                  <p className="font-marathi text-kesari-gold text-xs mt-1 tracking-wider">
+                    {photo.subCaption}
+                  </p>
                 </div>
               </div>
-
-              {/* Decorative dot below each photo */}
-              <motion.div 
-                className="flex justify-center mt-4"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 + 0.5, duration: 0.3 }}
-              >
-                <div className="w-2 h-2 rounded-full bg-antique-gold/60" />
-              </motion.div>
             </motion.div>
           ))}
         </div>
 
         {/* Bottom Date Stamp */}
         <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="text-center mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 0.6 }}
+          transition={{ delay: 1, duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-warm-cream/80 border border-antique-gold/20">
-            <div className="w-8 h-px bg-antique-gold/40" />
-            <p className="font-marathi text-royal-maroon text-lg tracking-[0.4em] font-semibold">
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white/60 border-2 border-antique-gold/20 shadow-lg">
+            <Heart className="w-4 h-4 text-muted-rose fill-muted-rose" />
+            <p className="font-marathi text-royal-maroon text-lg tracking-[0.3em] font-semibold">
               ०६ • ०७ • २०२५
             </p>
-            <div className="w-8 h-px bg-antique-gold/40" />
+            <Heart className="w-4 h-4 text-muted-rose fill-muted-rose" />
           </div>
         </motion.div>
       </div>
@@ -182,73 +183,60 @@ export const MemoryGallery: React.FC = () => {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Backdrop */}
             <motion.div 
-              className="absolute inset-0 bg-deep-charcoal/95 backdrop-blur-sm"
+              className="absolute inset-0 bg-deep-charcoal/95 backdrop-blur-md"
               onClick={closeLightbox}
             />
             
-            {/* Close Button */}
             <button
               onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
-              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors duration-300 border border-warm-ivory/20"
-              aria-label="Close lightbox"
+              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors border border-warm-ivory/20"
             >
               <X className="w-6 h-6 text-warm-ivory" />
             </button>
 
-            {/* Navigation Buttons */}
             <button
               onClick={(e) => { e.stopPropagation(); goPrev(); }}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors duration-300 border border-warm-ivory/20"
-              aria-label="Previous photo"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors border border-warm-ivory/20"
             >
               <ChevronLeft className="w-6 h-6 text-warm-ivory" />
             </button>
             
             <button
               onClick={(e) => { e.stopPropagation(); goNext(); }}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors duration-300 border border-warm-ivory/20"
-              aria-label="Next photo"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-warm-ivory/10 flex items-center justify-center hover:bg-warm-ivory/25 transition-colors border border-warm-ivory/20"
             >
               <ChevronRight className="w-6 h-6 text-warm-ivory" />
             </button>
 
-            {/* Lightbox Content */}
             <motion.div
-              className="relative max-w-lg mx-4 md:mx-8"
+              className="relative max-w-2xl w-full mx-4"
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.4 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-deep-charcoal">
+              <div className="bg-warm-cream p-4 pb-12 rounded-lg shadow-2xl">
                 <img
                   src={photos[lightboxIndex].src}
                   alt={`Memory ${lightboxIndex + 1}`}
-                  className="w-full max-h-[70vh] object-contain"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  className="w-full max-h-[60vh] object-contain rounded"
                 />
-              </div>
-              
-              {/* Lightbox Caption */}
-              <div className="mt-6 text-center">
-                <p className="font-marathi text-warm-ivory text-xl md:text-2xl leading-relaxed">
-                  {photos[lightboxIndex].caption}
-                </p>
-                <p className="font-marathi text-kesari-gold text-base mt-2 tracking-wider">
-                  {photos[lightboxIndex].subCaption}
-                </p>
-                <p className="text-warm-cream/40 text-sm mt-4">
-                  {lightboxIndex + 1} / {photos.length}
-                </p>
+                <div className="mt-4 text-center">
+                  <p className="font-marathi text-royal-maroon text-xl">
+                    {photos[lightboxIndex].caption}
+                  </p>
+                  <p className="font-marathi text-kesari-gold text-sm mt-1">
+                    {photos[lightboxIndex].subCaption}
+                  </p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

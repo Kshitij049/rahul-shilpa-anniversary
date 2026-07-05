@@ -1,6 +1,7 @@
 ﻿import React, { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAudio } from './components/hooks/useAudio';
+import { Watermark } from './components/Watermark';
 import { IntroWelcome } from './components/IntroWelcome';
 import { CinematicSlideshow } from './components/CinematicSlideshow';
 import { MusicControl } from './components/MusicControl';
@@ -26,24 +27,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const audioHook = useAudio(coupleConfig.audioSource);
 
-  // Preload images on mount
   useEffect(() => {
     const images = [coupleConfig.photo1, coupleConfig.photo2, coupleConfig.photo3];
     let loaded = 0;
-    
     images.forEach((src) => {
       const img = new Image();
-      img.onload = () => {
-        loaded++;
-        if (loaded === images.length) setIsLoading(false);
-      };
-      img.onerror = () => {
-        loaded++;
-        if (loaded === images.length) setIsLoading(false);
-      };
+      img.onload = () => { loaded++; if (loaded === images.length) setIsLoading(false); };
+      img.onerror = () => { loaded++; if (loaded === images.length) setIsLoading(false); };
       img.src = src;
     });
-    
     const timeout = setTimeout(() => setIsLoading(false), 3000);
     return () => clearTimeout(timeout);
   }, []);
@@ -68,29 +60,15 @@ function App() {
       <audio ref={audioHook.audioRef} src={coupleConfig.audioSource} preload="auto" />
       <AnimatePresence mode="wait">
         {appState === 'intro' && (
-          <IntroWelcome
-            key="intro"
-            onStart={handleStart}
-            isLoading={isLoading}
-          />
+          <IntroWelcome key="intro" onStart={handleStart} isLoading={isLoading} />
         )}
-        
         {appState === 'slideshow' && (
-          <CinematicSlideshow
-            key="slideshow"
-            onComplete={handleSlideshowComplete}
-            onSkip={handleSkipSlideshow}
-          />
+          <CinematicSlideshow key="slideshow" onComplete={handleSlideshowComplete} onSkip={handleSkipSlideshow} />
         )}
       </AnimatePresence>
-      
       {appState === 'main' && (
-        <motion.div
-          key="main"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+        <motion.div key="main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+          <Watermark />
           <ScrollProgress />
           <HeroSection />
           <WeddingDateSection />
@@ -104,22 +82,24 @@ function App() {
           <BlessingSection />
           <FinalCinematicSection />
           <ShareSection />
-          
-          <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-royal-maroon/80 backdrop-blur-sm text-warm-cream/90 px-2 py-4 rounded-r-lg border-r border-antique-gold/40 shadow-lg">
-            <p className="font-english text-[8px] tracking-widest uppercase" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>Created by Kshitij Kamble</p>
-          </div>
-          <footer className="py-8 bg-deep-wine text-center">
-            <p className="font-marathi text-warm-cream/60 text-sm">
-              {coupleConfig.coupleNameMarathi} — प्रथम विवाह वर्षगाठ
-            </p>
-            <p className="font-marathi text-warm-cream/40 text-xs mt-1">
-              {coupleConfig.anniversaryDateMarathi}
-            </p>
-            <p className="font-marathi text-warm-cream/30 text-xs mt-2">
-              Created with love by {coupleConfig.creatorName} | {coupleConfig.creatorEmail}
-            </p>
+          <footer className="py-8 bg-deep-wine text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-antique-gold/5 to-transparent" />
+            <div className="relative z-10">
+              <p className="font-marathi text-warm-cream/60 text-sm">
+                {coupleConfig.coupleNameMarathi} — प्रथम विवाह वर्षगाठ
+              </p>
+              <p className="font-marathi text-warm-cream/40 text-xs mt-1">
+                {coupleConfig.anniversaryDateMarathi}
+              </p>
+              <div className="mt-3 flex items-center justify-center gap-2">
+                <div className="h-px w-8 bg-antique-gold/20" />
+                <p className="font-english text-warm-cream/30 text-[10px] tracking-widest uppercase">
+                  Crafted with love by {coupleConfig.creatorName}
+                </p>
+                <div className="h-px w-8 bg-antique-gold/20" />
+              </div>
+            </div>
           </footer>
-          
           <MusicControl audioHook={audioHook} />
         </motion.div>
       )}
@@ -128,7 +108,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
