@@ -14,11 +14,12 @@
 - [x] App.tsx: Removed intrusive left sidebar watermark
 - [x] Watermark: Redesigned to subtle K badge with hover tooltip
 - [x] Footer: Clean centered creator credit
+- [x] Build fix: heroImage -> photo1 (TypeScript error resolved)
+- [x] Vercel deployment successful (commit 8edb396)
 
 ## In Progress
-- [ ] Add real couple photos to public/images/
-- [ ] npm run build
-- [ ] Deploy to Vercel
+- [ ] Test live site on mobile
+- [ ] Client review of hero section changes
 
 ## Pending
 | # | Task | Priority | Status |
@@ -39,8 +40,12 @@
 | 2026-07-05 | Male head cut off in image | Fixed | object-position: center top |
 | 2026-07-05 | Watermark too distracting | Fixed | Subtle K badge + footer credit |
 | 2026-07-05 | Duplicate imports in App.tsx | Fixed | Cleaned up all duplicates |
+| 2026-07-05 | Build failed on Vercel (TS2339 heroImage) | Fixed | Changed to coupleConfig.photo1 |
+| 2026-07-05 | Vercel showing old failed deployment | Fixed | Force rebuild with new commit |
 
 ## Lessons Learned
 1. PowerShell cannot display Marathi/Unicode text in terminal output (shows as ????)
 2. English fonts are more readable on image backgrounds than Marathi script
 3. Using Set-Content with -Encoding UTF8 works correctly for Unicode files
+4. Always run `npm run build` locally before pushing to catch TypeScript errors
+5. Vercel may cache failed deployments — force a new commit to trigger fresh build
