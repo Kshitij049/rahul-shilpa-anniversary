@@ -5,8 +5,8 @@ import { coupleConfig } from '../coupleConfig';
 import { MogaraGarland, DecorativeDivider } from './DecorativeElements';
 
 const photos = [
-  { src: coupleConfig.photo1, caption: 'जिथून आपल्या आठवणींना नवी ओळख मिळाली…', position: coupleConfig.photo1Position },
-  { src: coupleConfig.photo2, caption: 'साध्या क्षणांत सापडलेलं खरं सुख…', position: coupleConfig.photo2Position },
+  { src: coupleConfig.photo1, caption: 'साध्या क्षणांत सापडलेलं खरं सुख…', position: coupleConfig.photo1Position },
+  { src: coupleConfig.photo2, caption: 'जिथून आपल्या आठवणींना नवी ओळख मिळाली…', position: coupleConfig.photo2Position },
   { src: coupleConfig.photo3, caption: 'आणि ही तर फक्त सुरुवात आहे…', position: coupleConfig.photo3Position },
 ];
 
