@@ -8,7 +8,7 @@ export const HeroSection: React.FC = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src={coupleConfig.heroImage}
+          src={coupleConfig.photo1}
           alt="Rahul and Shilpa"
           className="w-full h-full object-cover"
           style={{ objectPosition: 'center top' }}
