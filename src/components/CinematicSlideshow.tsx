@@ -240,7 +240,7 @@ const Scene7: React.FC = () => (
     <ParticleLayer count={15} />
     <FloralCorner position="top-left" /><FloralCorner position="top-right" />
     <FloralCorner position="bottom-left" /><FloralCorner position="bottom-right" />
-    <div className="absolute inset-0 flex flex-col items-center justify-end z-10 px-6 pb-16 text-center">
+    <div className="absolute inset-0 flex flex-col items-center justify-end z-10 px-6 pb-10 text-center">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
         <p className="font-marathi text-warm-ivory text-base sm:text-xl mb-1">आपल्या सहजीवनाचं</p>
         <p className="font-marathi text-gold-gradient text-xl sm:text-2xl font-semibold mb-3">पहिलं सुंदर वर्ष</p>
@@ -257,18 +257,18 @@ const Scene7: React.FC = () => (
         <p className="font-marathi text-warm-cream/80 text-sm sm:text-base">प्रथम विवाह वर्षगाठ</p>
         <p className="font-marathi text-kesari-gold text-base sm:text-lg font-semibold mt-1">{coupleConfig.anniversaryDateMarathi}</p>
       </motion.div>
-      <motion.div className="mt-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}>
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-antique-gold to-transparent mx-auto mb-2" />
-        <p className="font-marathi text-warm-cream/70 text-sm leading-relaxed">हातात हात…<br /> आणि सोबत आयुष्यभराची.</p>
-      </motion.div>
-      <motion.div className="mt-6 flex flex-col items-center" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.2 }}>
-        <div className="animate-bounce mb-2">
-          <svg className="w-8 h-8 text-antique-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <motion.div className="mt-2 flex flex-col items-center" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }}>
+        <div className="animate-bounce mb-1">
+          <svg className="w-10 h-10 text-antique-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
-        <p className="font-marathi text-soft-haldi text-sm sm:text-base font-semibold animate-pulse">खाली स्क्रोल करा</p>
-        <p className="font-marathi text-warm-cream/50 text-[10px] sm:text-xs mt-1">अधिक आठवणी पाहण्यासाठी</p>
+        <p className="font-marathi text-soft-haldi text-base sm:text-lg font-bold animate-pulse">खाली स्क्रोल करा</p>
+        <p className="font-marathi text-warm-cream/60 text-xs sm:text-sm mt-1">अधिक आठवणी पाहण्यासाठी</p>
+      </motion.div>
+      <motion.div className="mt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0 }}>
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-antique-gold to-transparent mx-auto mb-1" />
+        <p className="font-marathi text-warm-cream/70 text-sm leading-relaxed">हातात हात…<br /> आणि सोबत आयुष्यभराची.</p>
       </motion.div>
     </div>
   </motion.div>
