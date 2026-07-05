@@ -15,7 +15,6 @@ export const HeroSection: React.FC = () => {
           className="w-full h-full object-cover"
           style={{ objectPosition: 'center top' }}
         />
-        {/* Strong gradient at bottom for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-deep-wine/40 via-transparent to-deep-wine/90" />
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-deep-wine via-deep-wine/80 to-transparent" />
       </div>
@@ -44,7 +43,7 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* ALL Content pinned to BOTTOM */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pb-8 pt-20 px-6">
+      <div className="absolute bottom-0 left-0 right-0 z-10 pb-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           
           {/* English Names — BIG & BOLD */}
@@ -100,9 +99,9 @@ export const HeroSection: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator — MOVED UP */}
           <motion.div
-            className="mt-6 flex flex-col items-center gap-1"
+            className="mt-8 flex flex-col items-center gap-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5, duration: 1 }}
