@@ -65,6 +65,17 @@ function App() {
 
   return (
     <div className="relative bg-warm-ivory min-h-screen">
+      {/* Creator Watermark - Top Right TV Channel Style */}
+      <div className="fixed top-3 right-3 z-50 flex items-center gap-1.5 bg-royal-maroon/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-antique-gold/40 shadow-lg">
+        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-antique-gold to-kesari-gold flex items-center justify-center">
+          <span className="text-[8px] font-bold text-deep-wine">KK</span>
+        </div>
+        <div className="flex flex-col leading-none">
+          <span className="text-[8px] font-english text-warm-cream/90 tracking-wide">Created by</span>
+          <span className="text-[9px] font-english font-semibold text-antique-gold">Kshitij Kamble</span>
+        </div>
+      </div>
+
       <audio ref={audioHook.audioRef} src={coupleConfig.audioSource} preload="auto" />
       <AnimatePresence mode="wait">
         {appState === 'intro' && (
@@ -105,9 +116,7 @@ function App() {
           <FinalCinematicSection />
           <ShareSection />
           
-          <div className="fixed left-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-royal-maroon/80 backdrop-blur-sm text-warm-cream/90 px-2 py-4 rounded-r-lg border-r border-antique-gold/40 shadow-lg">
-            <p className="font-english text-[8px] tracking-widest uppercase" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>Created by Kshitij Kamble</p>
-          </div>
+          
           <footer className="py-8 bg-deep-wine text-center">
             <p className="font-marathi text-warm-cream/60 text-sm">
               {coupleConfig.coupleNameMarathi} — प्रथम विवाह वर्षगाठ

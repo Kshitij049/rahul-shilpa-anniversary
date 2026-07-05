@@ -134,15 +134,16 @@ const Scene3: React.FC = () => (
         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
       <div className="absolute inset-0 bg-gradient-to-t from-deep-wine/90 via-deep-wine/60 to-deep-wine/50" />
     </motion.div>
-    <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6 text-center">
+    <div className="absolute inset-0 flex flex-col items-center justify-end z-10 px-6 pb-20 text-center">
       <motion.p className="font-marathi text-warm-ivory text-xl sm:text-3xl mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>दोन वाटांनी…</motion.p>
-      <motion.p className="font-marathi text-soft-haldi text-lg sm:text-2xl mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+      <motion.p className="font-marathi text-soft-haldi text-lg sm:text-2xl mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>एक सुंदर प्रवास सुरू केला…</motion.p>
-      <motion.p className="font-marathi text-gold-gradient text-2xl sm:text-4xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+      <motion.div className="drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.3 }}>
-        {coupleConfig.coupleNameMarathi}
-      </motion.p>
+        <p className="font-marathi text-gold-gradient text-2xl sm:text-4xl font-bold">{coupleConfig.coupleNameMarathi}</p>
+        <p className="font-english text-warm-cream/80 text-sm sm:text-base mt-1 tracking-widest">{coupleConfig.coupleNameEnglish}</p>
+      </motion.div>
     </div>
   </motion.div>
 );
@@ -186,10 +187,10 @@ const Scene5: React.FC = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-deep-wine/50 via-transparent to-deep-wine/80" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,201,109,0.1)_0%,transparent_70%)]" />
     </motion.div>
-    <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6 text-center">
+    <div className="absolute inset-0 flex flex-col items-center justify-end z-10 px-6 pb-20 text-center">
       <motion.p className="font-marathi text-warm-ivory text-lg sm:text-2xl mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}> आणि पाहता पाहता…</motion.p>
-      <motion.p className="font-marathi text-gold-gradient text-2xl sm:text-4xl font-bold mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+      <motion.p className="font-marathi text-gold-gradient text-2xl sm:text-4xl font-bold mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}>एक सुंदर वर्ष पूर्ण झालं.</motion.p>
       <motion.div className="font-marathi text-soft-haldi text-base sm:text-lg space-y-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
@@ -239,29 +240,35 @@ const Scene7: React.FC = () => (
     <ParticleLayer count={15} />
     <FloralCorner position="top-left" /><FloralCorner position="top-right" />
     <FloralCorner position="bottom-left" /><FloralCorner position="bottom-right" />
-    <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+    <div className="absolute inset-0 flex flex-col items-center justify-end z-10 px-6 pb-16 text-center">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-        <p className="font-marathi text-warm-ivory text-base sm:text-xl mb-2">आपल्या सहजीवनाचं</p>
-        <p className="font-marathi text-gold-gradient text-xl sm:text-2xl font-semibold mb-4">पहिलं सुंदर वर्ष</p>
+        <p className="font-marathi text-warm-ivory text-base sm:text-xl mb-1">आपल्या सहजीवनाचं</p>
+        <p className="font-marathi text-gold-gradient text-xl sm:text-2xl font-semibold mb-3">पहिलं सुंदर वर्ष</p>
       </motion.div>
       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6 }}>
-        <MogaraGarland className="mb-3" />
-        <p className="font-marathi text-soft-haldi text-3xl sm:text-5xl font-bold leading-tight">{coupleConfig.groomNameMarathi}</p>
-        <p className="font-marathi text-kesari-gold text-2xl sm:text-4xl my-1">♡</p>
-        <p className="font-marathi text-soft-haldi text-3xl sm:text-5xl font-bold leading-tight">{coupleConfig.brideNameMarathi}</p>
-        <MogaraGarland className="mt-3" />
+        <MogaraGarland className="mb-2" />
+        <p className="font-marathi text-soft-haldi text-2xl sm:text-4xl font-bold leading-tight">{coupleConfig.groomNameMarathi}</p>
+        <p className="font-marathi text-kesari-gold text-xl sm:text-3xl my-1">♡</p>
+        <p className="font-marathi text-soft-haldi text-2xl sm:text-4xl font-bold leading-tight">{coupleConfig.brideNameMarathi}</p>
+        <p className="font-english text-warm-cream/70 text-xs sm:text-sm mt-1 tracking-widest">{coupleConfig.coupleNameEnglish}</p>
+        <MogaraGarland className="mt-2" />
       </motion.div>
-      <motion.div className="mt-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
+      <motion.div className="mt-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
         <p className="font-marathi text-warm-cream/80 text-sm sm:text-base">प्रथम विवाह वर्षगाठ</p>
         <p className="font-marathi text-kesari-gold text-base sm:text-lg font-semibold mt-1">{coupleConfig.anniversaryDateMarathi}</p>
       </motion.div>
-      <motion.div className="mt-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}>
-        <div className="w-20 h-px bg-gradient-to-r from-transparent via-antique-gold to-transparent mx-auto mb-3" />
+      <motion.div className="mt-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}>
+        <div className="w-20 h-px bg-gradient-to-r from-transparent via-antique-gold to-transparent mx-auto mb-2" />
         <p className="font-marathi text-warm-cream/70 text-sm leading-relaxed">हातात हात…<br /> आणि सोबत आयुष्यभराची.</p>
       </motion.div>
-      <motion.div className="mt-6" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.2 }}>
-        <p className="font-marathi text-soft-haldi/80 text-xs sm:text-sm animate-pulse">↓ स्क्रोल करा ↓</p>
-        <p className="font-marathi text-warm-cream/50 text-[10px] sm:text-xs mt-1">अधिक आठवणी पाहण्यासाठी खाली स्क्रोल करा</p>
+      <motion.div className="mt-6 flex flex-col items-center" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.2 }}>
+        <div className="animate-bounce mb-2">
+          <svg className="w-8 h-8 text-antique-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+        <p className="font-marathi text-soft-haldi text-sm sm:text-base font-semibold animate-pulse">खाली स्क्रोल करा</p>
+        <p className="font-marathi text-warm-cream/50 text-[10px] sm:text-xs mt-1">अधिक आठवणी पाहण्यासाठी</p>
       </motion.div>
     </div>
   </motion.div>
