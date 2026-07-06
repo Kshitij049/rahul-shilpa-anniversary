@@ -1,5 +1,6 @@
-﻿import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import { useAudio } from './components/hooks/useAudio';
 import { Watermark } from './components/Watermark';
 import { IntroWelcome } from './components/IntroWelcome';
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <div className="relative bg-warm-ivory min-h-screen">
+      <Analytics />
       <audio ref={audioHook.audioRef} src={coupleConfig.audioSource} preload="auto" />
       <AnimatePresence mode="wait">
         {appState === 'intro' && (
